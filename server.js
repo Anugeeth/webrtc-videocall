@@ -12,7 +12,7 @@ const { v4: uuidV4 } = require('uuid')
 app.use(cors())
 
 const peerServer = ExpressPeerServer(server, {
-  path: '/'
+  path: '/peerserver'
 });
 
 app.use('/peerjs', peerServer);
