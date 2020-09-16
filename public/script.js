@@ -2,13 +2,13 @@ const socket = io('/')
 const videoGrid = document.getElementById('video-grid')
 const myPeer = new Peer(undefined, {
   secure: true,
-  host: 'video-call-prsn0.herokuapp.com/',
-  port: '9000',
+  host: 'cc123a.herokuapp.com',
+  port: 443,
+  path: '/'
 })
 const myVideo = document.createElement('video')
 myVideo.muted = true
 const peers = {}
-
 navigator.mediaDevices.getUserMedia({
   video: true,
   audio: true

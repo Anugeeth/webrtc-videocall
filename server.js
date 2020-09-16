@@ -1,14 +1,13 @@
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 const express = require('express')
 const app = express()
 const server = require('http').Server(app)
-
-var cors = require('cors')
-
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
-app.use(cors())
 
+
+const cors = require('cors')
+app.use(cors())
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
@@ -31,7 +30,4 @@ io.on('connection', socket => {
   })
 })
 
-
 server.listen(port)
-
-
