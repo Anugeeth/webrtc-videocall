@@ -3,9 +3,9 @@ const videoGrid = document.getElementById('video-grid')
 // create peer object
 const myPeer = new Peer(undefined, {
   secure: true,
-  host: 'cc123a.herokuapp.com',
-  port: 443,
-  path: '/'
+  host: '/',
+  port: '',
+  path: '/peer'
 })
 
 const myVideo = document.createElement('video')
