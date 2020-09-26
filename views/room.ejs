@@ -1,31 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- copy pasted styles -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+
+  <style>
+    body{
+      margin : 0;
+    }
+    .main {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .main__videos {
+      flex-grow: 1;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .main__controls {
+      background-color: #1C1E20;
+    }
+
+    .main__right {
+      background-color: #242324;
+      border-left: 1px solid #3D3D42;
+    }
+
+    .main__controls {
+      color: #D2D2D2;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+    }
+
+    .main__controls__block {
+      display: flex;
+    }
+
+    .main__controls__button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 10px;
+      min-width: 80px;
+      cursor: pointer;
+    }
+
+    .main__controls__button:hover {
+      background-color: #343434;
+      border-radius: 5px;
+    }
+
+    .main__controls__button i {
+      font-size: 24px;
+    }
+
+    .main__right {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main__header {
+      padding-top: 5px;
+      color: #F5F5F5;
+      text-align: center;
+    }
+
+    .leave_meeting {
+      color: #EB534B;
+    }
+
+    .unmute,
+    .stop {
+      color: #CC3B33;
+    }
+  </style>
   <script>
     const ROOM_ID = "<%= roomId %>"
   </script>
   <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="/script.js" defer></script>
-  <title>Document</title>
+  <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+
+  <title>"<%= roomId %>"</title>
   <style>
     #video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 300px);
-      grid-auto-rows: 300px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
-    
+
     video {
-      width: 100%;
-      height: 100%;
+      height: 300px;
+      width: 400px;
       object-fit: cover;
+      padding: 8px;
     }
   </style>
 </head>
-<body>
+
+<!-- <body>
   <div id="video-grid"></div>
+</body> -->
+
+<body>
+
+  <div class="main">
+      <div class="main__videos">
+        <div id="video-grid">
+
+        </div>
+      </div>
+      <div class="main__controls">
+        <div class="main__controls__block">
+          <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
+            <i class="fas fa-microphone"></i>
+            <span>Mute</span>
+          </div>
+          <div onclick="playStop()" class="main__controls__button main__video_button">
+            <i class="fas fa-video"></i>
+            <span>Stop Video</span>
+          </div>
+        </div>
+        <div class="main__controls__block">
+          <div class="main__controls__button">
+            <span class="leave_meeting">Leave Meeting</span>
+          </div>
+        </div>
+      </div>
+  </div>
 </body>
+
 </html>
